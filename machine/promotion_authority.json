@@ -1,0 +1,11 @@
+{
+  "schema": "glaciereq.promotion-authority-grant.v1",
+  "repository": "GlacierEQ/openai-reasoning-budget-futures",
+  "source_sha": "cc126dac3d36de7d4ac5cc54b8ba7ef92ba338a19a89ca5b07f9cd164fb040dd",
+  "proof_receipt_digest": "7de6c63a63f37f280f6a082b94c39e710420531b99a9c1b7b5d4dfbdd9f4409e",
+  "not_after": 1788927149.234226,
+  "mac": "71e51edfccf0220ad3a04ed5b1b51ae0b751e56ed1b6aa5c591de35292326dc4",
+  "issuer": "local_operator_promotion_authority",
+  "verified": true,
+  "secret_ref": "src/promotion_authority.py::LOCAL_OPERATOR_SECRET"
+}

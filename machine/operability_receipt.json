@@ -1,0 +1,27 @@
+{
+  "schema": "glaciereq.operability-receipt.v1",
+  "repository": "GlacierEQ/openai-reasoning-budget-futures",
+  "at": "2026-08-10T04:12Z",
+  "source_sha": "cc126dac3d36de7d4ac5cc54b8ba7ef92ba338a19a89ca5b07f9cd164fb040dd",
+  "entry": "scripts/operate.py",
+  "primary_output": {
+    "module": "budget_futures",
+    "ok": true,
+    "repository": "GlacierEQ/openai-reasoning-budget-futures",
+    "smoke": {
+      "args": [
+        "'sample_future_id'",
+        "1"
+      ],
+      "content_checked": true,
+      "invoked": true,
+      "kind": "class",
+      "method": "mint",
+      "module_local": true,
+      "name": "ReasoningBudgetLedger",
+      "result": "BudgetFuture(future_id='sample_future_id', max_tokens=1, spent=0, frozen=False, freeze_reason=None)"
+    }
+  },
+  "dual_run_ok": true,
+  "result": "PASS"
+}

@@ -1,0 +1,31 @@
+{
+  "schema": "glaciereq.proof-receipt.v1",
+  "repository": "GlacierEQ/openai-reasoning-budget-futures",
+  "source_sha": "cc126dac3d36de7d4ac5cc54b8ba7ef92ba338a19a89ca5b07f9cd164fb040dd",
+  "proof_id": "elite-openai-reasoning-budget-futures-1786335149",
+  "environment": {
+    "python": "/Users/kcbflux/job-app/excellence/.venv-elite/bin/python",
+    "PYTHONPATH": "/Users/kcbflux/job-app/repos/openai-reasoning-budget-futures:/Users/kcbflux/job-app/repos/openai-reasoning-budget-futures/src",
+    "entry": "unittest"
+  },
+  "tests": [
+    "/Users/kcbflux/job-app/excellence/.venv-elite/bin/python -m unittest discover -s tests -v (x2)"
+  ],
+  "adversarial_tests": [
+    "tests/test_adversarial.py"
+  ],
+  "runtime": {
+    "operate": "scripts/operate.py (x2)",
+    "dual_run_ok": true,
+    "proof_dual_run_ok": true
+  },
+  "result": "PASS",
+  "limitations": [
+    "not production deployed",
+    "reference implementation only"
+  ],
+  "timestamp": "2026-08-10T04:12Z",
+  "artifact_hashes": {
+    "operability_receipt": "7a8551b004141bc53a7f04ac276af6f97f47e34f1f1ff67e589b948ed3b5faac"
+  }
+}
