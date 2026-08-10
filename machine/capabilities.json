@@ -1,1 +1,23 @@
-{"capabilities": ["hyper-scaling"]}
+{
+  "schema": "glaciereq.repo-capabilities.v1",
+  "repository": "GlacierEQ/openai-reasoning-budget-futures",
+  "capability_family": "precommitted_reasoning_budget_control",
+  "capabilities": [
+    "unique-prepaid-reasoning-futures",
+    "remaining-budget-metering",
+    "over-budget-spend-refusal",
+    "nonpositive-spend-refusal",
+    "entropy-spike-pre-spend-freeze",
+    "frozen-budget-refusal",
+    "deterministic-spend-receipts"
+  ],
+  "evidence_refs": [
+    "src/budget_futures.py",
+    "ts/budget_futures.mjs",
+    "tests/test_budget_futures.py",
+    "tests/test_adversarial.py",
+    "machine/proof_receipt.json",
+    "machine/canonical-position.json"
+  ],
+  "truth_boundary": "Repository-local reasoning-budget mechanisms only. No OpenAI adoption, production reasoning-scheduler deployment, or exercised integration with adjacent OpenAI repositories is implied."
+}
