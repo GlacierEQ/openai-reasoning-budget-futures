@@ -1,0 +1,62 @@
+{
+  "schema": "glaciereq.repo-canonical-position.v1",
+  "repository": "GlacierEQ/openai-reasoning-budget-futures",
+  "position_state": "RESOLVED",
+  "role": "company_specific_specialist_system",
+  "company_target": "OpenAI",
+  "canonical_identity": "reasoning-budget-futures",
+  "unique_value": [
+    "reasoning compute is precommitted as explicit token envelopes instead of being consumed against an implicit unlimited budget",
+    "every spend is metered against remaining authority and over-budget or non-positive spends fail closed without consuming capacity",
+    "an entropy spike freezes the budget before the requested spend is charged, and a frozen future refuses subsequent spending",
+    "mint and spend outcomes retain deterministic identities and receipts so budget state can be audited without inferring completion from intent"
+  ],
+  "lineage_distinction": {
+    "GlacierEQ/openai-reasoning-kv-sentinel": "referenced reasoning-state reliability complement; not the owner of prepaid compute-budget authority and no exercised integration is claimed",
+    "GlacierEQ/openai-tool-authority-matrix": "owns tool-dispatch authority and replay-safe request admission; complementary action-authority plane, not reasoning-resource budgeting"
+  },
+  "capability_contribution": {
+    "family": "precommitted_reasoning_budget_control",
+    "extractable_mechanisms": [
+      "unique prepaid reasoning futures",
+      "remaining-budget metering",
+      "over-budget spend refusal",
+      "non-positive spend refusal",
+      "entropy-spike pre-spend freeze",
+      "frozen-budget refusal",
+      "deterministic spend receipts"
+    ],
+    "ownership": "This repository remains the owning OpenAI-specialist implementation of precommitted reasoning-budget control; capability extraction preserves repository identity and lineage."
+  },
+  "integration_policy": {
+    "preserve_repository_identity": true,
+    "preserve_lineage": true,
+    "presentation_independent": true,
+    "size_or_loc_not_dispositive": true,
+    "absorption_requires_functional_equivalence": true,
+    "absorption_requires_proof_equivalence": true
+  },
+  "relationships": [
+    {"repository": "GlacierEQ/openai-reasoning-kv-sentinel", "kind": "REFERENCE_COMPLEMENT", "integration_state": "NOT_CLAIMED"},
+    {"repository": "GlacierEQ/openai-tool-authority-matrix", "kind": "COMPLEMENTARY_TOOL_AUTHORITY_COMPONENT", "integration_state": "NOT_CLAIMED"}
+  ],
+  "next_evolution": "Add hierarchical/attenuating sub-budgets, wall-clock and monetary resource dimensions, explicit unfreeze/revocation authority, and provider-confirmed actual usage reconciliation while preserving pre-spend freeze and no-overrun semantics.",
+  "evidence_refs": [
+    "README.md",
+    "ISSUE_CONTRACT.md",
+    "src/budget_futures.py",
+    "ts/budget_futures.mjs",
+    "tests/test_budget_futures.py",
+    "tests/test_adversarial.py",
+    "machine/target-contract.json",
+    "machine/proof_receipt.json",
+    "machine/operability_receipt.json",
+    "machine/promotion_authority.json"
+  ],
+  "nonclaims": [
+    "no OpenAI affiliation",
+    "no OpenAI internal architecture claim",
+    "not a production OpenAI reasoning scheduler",
+    "repository relationships do not imply exercised integration"
+  ]
+}
