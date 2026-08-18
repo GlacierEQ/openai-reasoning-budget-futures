@@ -17,7 +17,7 @@
     "tests/test_budget_futures.py",
     "tests/test_adversarial.py",
     "machine/proof_receipt.json",
-    "machine/canonical-position.json"
+    "machine/apex-position.json"
   ],
   "truth_boundary": "Repository-local reasoning-budget mechanisms only. No OpenAI adoption, production reasoning-scheduler deployment, or exercised integration with adjacent OpenAI repositories is implied."
 }
