@@ -1,0 +1,88 @@
+{
+  "schema": "glaciereq.integration-lineage.v1",
+  "repository": "GlacierEQ/openai-reasoning-budget-futures",
+  "adoptions": [
+    {
+      "source_repo": "GlacierEQ/pro-code",
+      "source_path": "DESIGN_PRINCIPLES.md",
+      "source_blob_sha": "b7a42bdd3f2784f359ef737ae61cf2b4db396dd9",
+      "adopted_mechanisms": [
+        "failure paths as first-class design",
+        "audit trails for significant execution",
+        "complexity must earn capability",
+        "public claims calibrated without shrinking the development target"
+      ],
+      "local_evidence": [
+        "src/budget_exchange.py",
+        "scripts/portfolio_plan.py",
+        "tests/test_budget_exchange.py"
+      ]
+    },
+    {
+      "source_repo": "GlacierEQ/Pro_Code",
+      "source_path": "README.md",
+      "source_blob_sha": "21775d6f74baa152f2777f8880261710b5fe99ee",
+      "adopted_mechanisms": [
+        "target-repository adoption requires repository-local implementation and proof"
+      ],
+      "local_evidence": [
+        "machine/capabilities.json",
+        ".github/workflows/elite-core.yml",
+        "scripts/ci/verify_elite_core.sh"
+      ]
+    },
+    {
+      "source_repo": "GlacierEQ/glaciereq-excellence-core",
+      "source_path": "src/glaciereq_excellence_core/innovation.py",
+      "source_blob_sha": "968077ab78a0d628ce84f5e6155b6885f3aa092d",
+      "adopted_mechanisms": [
+        "Pareto dominance before preference ordering",
+        "non-dominated frontier preservation",
+        "finite fail-closed objective inputs"
+      ],
+      "local_evidence": [
+        "src/budget_exchange.py"
+      ]
+    },
+    {
+      "source_repo": "GlacierEQ/apex-control-plane",
+      "source_path": "APEX_ENFORCED_STARTUP.md",
+      "source_blob_sha": "373cf1a9f0e879e62f8cef5159822a42234b57d5",
+      "adopted_mechanisms": [
+        "generated, executed, and verified are distinct states",
+        "material claims require provenance",
+        "adversarial verification before promotion"
+      ],
+      "local_evidence": [
+        "scripts/portfolio_plan.py",
+        "scripts/ci/verify_elite_core.sh",
+        "tests/test_budget_exchange.py"
+      ]
+    },
+    {
+      "source_repo": "GlacierEQ/public-actions-runner-host",
+      "source_path": ".github/workflows/reusable-quick-ci.yml",
+      "source_blob_sha": "2f4151fdf31432272aec5101318834c8257a7a87",
+      "workflow_ref": "a6085dae73bb80e91b845fd4a0d2f73a9c6b985a",
+      "adopted_mechanisms": [
+        "trusted GlacierEQ caller boundary",
+        "repository-owned verification scripts",
+        "bounded verification artifact upload"
+      ],
+      "local_evidence": [
+        ".github/workflows/elite-core.yml",
+        "scripts/ci/verify_elite_core.sh"
+      ]
+    }
+  ],
+  "preserved_local_mechanism": {
+    "source": "src/budget_futures.py",
+    "role": "existing fail-closed execution-envelope ledger",
+    "composition": "selected portfolio tiers are materialized into exact token/tool/parallel ceilings without replacing the original ledger"
+  },
+  "nonclaims": [
+    "lineage does not imply live runtime connectivity to the source repositories",
+    "portfolio utility is caller-declared planning input, not measured model quality",
+    "no OpenAI production scheduler integration or proprietary access is claimed"
+  ]
+}
