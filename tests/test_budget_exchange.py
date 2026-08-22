@@ -80,6 +80,28 @@ class ReasoningFuturesExchangeTests(unittest.TestCase):
         self.assertEqual(refused.status, SpendStatus.REFUSED)
         self.assertEqual(refused.reason, "OVER_BUDGET")
 
+    def test_zero_tool_reasoning_job_remains_valid(self):
+        bid = ReasoningBid(
+            "reason-only",
+            (ReasoningTier("local", 64, 0, 1, utility=2.0),),
+            required=True,
+        )
+        exchange = ReasoningFuturesExchange(
+            (bid,),
+            ResourcePool(tokens=64, tool_calls=0, parallel_agents=1),
+        )
+        selected = exchange.select("value")
+        self.assertEqual(selected.total_tool_calls, 0)
+        ledger = exchange.materialize_ledger(selected)
+        receipt = ledger.authorize_execution(
+            "portfolio:reason-only",
+            64,
+            parallel_agents=1,
+            tool_calls=0,
+        )
+        self.assertEqual(receipt.status, SpendStatus.OK)
+        self.assertEqual(receipt.tool_calls_remaining, 0)
+
     def test_impossible_mandatory_work_refuses(self):
         exchange = ReasoningFuturesExchange(
             (self.a,),
@@ -114,7 +136,11 @@ class ReasoningFuturesExchangeTests(unittest.TestCase):
         with self.assertRaises(ValueError):
             ReasoningTier("bad", 1, 1, 1, utility=float("nan"))
         with self.assertRaises(ValueError):
+            ReasoningTier("bad-tools", 1, -1, 1, utility=1.0)
+        with self.assertRaises(ValueError):
             ResourcePool(tokens=0, tool_calls=1, parallel_agents=1)
+        with self.assertRaises(ValueError):
+            ResourcePool(tokens=1, tool_calls=-1, parallel_agents=1)
         with self.assertRaises(ValueError):
             ReasoningFuturesExchange((self.a, self.a), ResourcePool(1000, 10, 10))
         with self.assertRaises(ValueError):
