@@ -12,11 +12,11 @@ CAPABILITIES = json.loads((ROOT / "machine" / "capabilities.json").read_text(enc
 class ApexPositionContractTests(unittest.TestCase):
     def test_evolving_state_is_gate_complete(self):
         self.assertEqual(STATE["principal_state"], "EVOLVING")
+        self.assertEqual(STATE["state"], "EVOLVING")
         self.assertEqual(STATE["gates"]["APEX_POSITION_RESOLVED"]["status"], "PASS")
         self.assertEqual(STATE["gates"]["EVOLUTION_CURSOR_DEFINED"]["status"], "PASS")
         self.assertEqual(STATE["apex_position_ref"], "machine/apex-position.json")
         self.assertEqual(STATE["historical_position_ref"], "machine/apex-position.json")
-        self.assertNotIn("APEX_POSITION_RESOLVED", STATE["gates"])
 
     def test_specialist_identity_lineage_and_human_authority_are_preserved(self):
         self.assertEqual(POSITION["source_identity"], "reasoning-budget-futures")
