@@ -23,8 +23,10 @@ from pathlib import Path
 
 plan_path = Path('.verification-artifacts/reasoning-portfolio.json')
 receipt_path = Path('.verification-artifacts/reasoning-portfolio.receipt.json')
+lineage_path = Path('machine/integration-lineage.json')
 plan = json.loads(plan_path.read_text(encoding='utf-8'))
 receipt = json.loads(receipt_path.read_text(encoding='utf-8'))
+lineage = json.loads(lineage_path.read_text(encoding='utf-8'))
 
 assert plan['schema'] == 'glaciereq.reasoning-futures-portfolio.v1'
 assert plan['evidence_state'] == 'DETERMINISTIC_REASONING_PORTFOLIO_MODEL'
@@ -42,10 +44,29 @@ assert [(row['job_id'], row['tier']['name']) for row in selected['choices']] == 
 actual = hashlib.sha256(plan_path.read_bytes()).hexdigest()
 assert receipt['artifact_sha256'] == actual
 assert receipt['verified_state'] == 'DETERMINISTIC_PORTFOLIO_MODEL_EXECUTED'
+
+expected_sources = {
+    'GlacierEQ/pro-code',
+    'GlacierEQ/Pro_Code',
+    'GlacierEQ/glaciereq-excellence-core',
+    'GlacierEQ/apex-control-plane',
+    'GlacierEQ/public-actions-runner-host',
+}
+observed_sources = {row['source_repo'] for row in lineage['adoptions']}
+assert observed_sources == expected_sources
+for adoption in lineage['adoptions']:
+    assert len(adoption['source_blob_sha']) == 40
+    assert adoption['adopted_mechanisms']
+    assert adoption['local_evidence']
+    for local_path in adoption['local_evidence']:
+        assert Path(local_path).exists(), f'missing integration evidence: {local_path}'
+assert lineage['preserved_local_mechanism']['source'] == 'src/budget_futures.py'
+
 print(json.dumps({
     'elite_core': 'PASS',
     'frontier_count': plan['frontier_count'],
     'selected': selected,
     'artifact_sha256': actual,
+    'integration_sources': sorted(observed_sources),
 }, indent=2))
 PY
