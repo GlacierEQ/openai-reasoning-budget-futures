@@ -39,10 +39,12 @@ class ReasoningTier:
     def __post_init__(self) -> None:
         if not self.name.strip():
             raise ValueError("tier name must be non-empty")
-        for name in ("tokens", "tool_calls", "parallel_agents"):
-            value = getattr(self, name)
-            if value < 1:
-                raise ValueError(f"{name} must be positive")
+        if self.tokens < 1:
+            raise ValueError("tokens must be positive")
+        if self.tool_calls < 0:
+            raise ValueError("tool_calls must be non-negative")
+        if self.parallel_agents < 1:
+            raise ValueError("parallel_agents must be positive")
         for name in ("utility", "uncertainty"):
             value = getattr(self, name)
             if not isfinite(value) or value < 0:
@@ -73,9 +75,14 @@ class ResourcePool:
     max_combinations: int = 100_000
 
     def __post_init__(self) -> None:
-        for name in ("tokens", "tool_calls", "parallel_agents", "max_combinations"):
-            if getattr(self, name) < 1:
-                raise ValueError(f"{name} must be positive")
+        if self.tokens < 1:
+            raise ValueError("tokens must be positive")
+        if self.tool_calls < 0:
+            raise ValueError("tool_calls must be non-negative")
+        if self.parallel_agents < 1:
+            raise ValueError("parallel_agents must be positive")
+        if self.max_combinations < 1:
+            raise ValueError("max_combinations must be positive")
 
 
 @dataclass(frozen=True)
