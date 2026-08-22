@@ -1,0 +1,55 @@
+{
+  "schema": "glaciereq.reasoning-futures-input.v1",
+  "pool": {
+    "tokens": 400,
+    "tool_calls": 4,
+    "parallel_agents": 3,
+    "max_combinations": 1000
+  },
+  "bids": [
+    {
+      "job_id": "train-a",
+      "required": true,
+      "tiers": [
+        {
+          "name": "lean",
+          "tokens": 100,
+          "tool_calls": 1,
+          "parallel_agents": 1,
+          "utility": 4.0,
+          "uncertainty": 1.0
+        },
+        {
+          "name": "deep",
+          "tokens": 300,
+          "tool_calls": 3,
+          "parallel_agents": 2,
+          "utility": 9.0,
+          "uncertainty": 2.0
+        }
+      ]
+    },
+    {
+      "job_id": "eval-b",
+      "required": false,
+      "tiers": [
+        {
+          "name": "quick",
+          "tokens": 100,
+          "tool_calls": 1,
+          "parallel_agents": 1,
+          "utility": 4.0,
+          "uncertainty": 0.5
+        },
+        {
+          "name": "deep",
+          "tokens": 250,
+          "tool_calls": 4,
+          "parallel_agents": 2,
+          "utility": 8.0,
+          "uncertainty": 1.0
+        }
+      ]
+    }
+  ]
+}
