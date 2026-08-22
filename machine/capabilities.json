@@ -9,15 +9,26 @@
     "nonpositive-spend-refusal",
     "entropy-spike-pre-spend-freeze",
     "frozen-budget-refusal",
-    "deterministic-spend-receipts"
+    "deterministic-spend-receipts",
+    "multi-job-reasoning-resource-allocation",
+    "mandatory-work-capacity-refusal",
+    "pareto-reasoning-portfolio-frontier",
+    "bounded-combinatorial-search-refusal",
+    "selected-portfolio-ledger-materialization",
+    "receipt-hashed-portfolio-artifacts"
   ],
   "evidence_refs": [
     "src/budget_futures.py",
+    "src/budget_exchange.py",
     "ts/budget_futures.mjs",
     "tests/test_budget_futures.py",
+    "tests/test_budget_exchange.py",
     "tests/test_adversarial.py",
+    "scripts/portfolio_plan.py",
+    "scripts/ci/verify_elite_core.sh",
+    "machine/portfolio-demo.json",
     "machine/proof_receipt.json",
     "machine/apex-position.json"
   ],
-  "truth_boundary": "Repository-local reasoning-budget mechanisms only. No OpenAI adoption, production reasoning-scheduler deployment, or exercised integration with adjacent OpenAI repositories is implied."
+  "truth_boundary": "Repository-local reasoning-budget and deterministic portfolio-planning mechanisms only. No OpenAI adoption, production reasoning-scheduler deployment, provider usage reconciliation, measured model-quality gain, or exercised integration with adjacent OpenAI repositories is implied."
 }
